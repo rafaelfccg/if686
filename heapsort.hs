@@ -36,10 +36,7 @@ makeheap (x:xs) hp = makeheap xs (add x hp)
 heapsort:: [Int]->[Int]
 heapsort l1 = sort (makeheap l1 [])
 		 		  	
-		 		  
-		 	
-crash  = (add 10 [9, 8, 7, 5, 4, 3, 2]);
-main = print crash
+		 		 
 
 
 
