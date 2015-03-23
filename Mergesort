@@ -1,0 +1,21 @@
+
+
+split :: [Int]->([Int],[Int)
+split [] =([],[])
+split [x]=([x],[])
+split x:y:xs =(x:fst (split xs),y: snd (split xs))
+
+
+
+
+
+
+mergesort :: (a -> a -> Bool) -> [a] -> [a]
+mergesort pred []   = []
+mergesort pred [x]  = [x]
+mergesort pred xs = merge pred (mergesort pred xs1) (mergesort pred xs2)
+  where
+    (xs1,xs2) = split xs
+    
+    
+ 
