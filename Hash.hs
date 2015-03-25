@@ -44,9 +44,48 @@ remove k ht | k == (fst (ht!!v)) = (take (v) ht) ++ (-1,""):(drop (v+1) ht)
 			| otherwise = (take (na) ht) ++ (-1,""):(drop (na+1) ht)
 			where v = (hash k 100)
 			      na = (checkNext k (v+1) ht)
-			      
+
 hasKey:: Key->HashTable->Bool
 hasKey k [] = False
 hasKey k (x:xs) | k==(fst x) =True
 				| otherwise = (hasKey k xs)
+
+-------------CONJUNTOS
+
+haveElement :: (Eq t)=>t->[t]->Bool
+haveElement a [] = False;
+haveElement a (s:xs) | a==s = True
+				   | otherwise = haveElement a xs
+
+contem:: (Eq t) => [t]->[t]->Bool
+contem a [] = True
+contem a (b:xb) = (haveElement b a) && (contem a xb)
+
+intersecta:: (Eq t) => [t]->[t]->Bool
+intersecta a [] = False
+intersecta a (b:xb) = (haveElement b a) || (intersecta a xb)
+
+comparaConjuntos ::(Eq t) => [t]->[t] ->String
+comparaConjuntos a b 	| cab && cba = "A igual B"
+					 	| cab = "A contem B"
+					 	| cba = "B contem A"
+					 	| iab = "A interseciona B"
+					 	| otherwise = "Conjuntos Disjuntos"
+							where	cab = (contem a b)
+								cba = (contem b a)
+								iab = (intersecta a b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
