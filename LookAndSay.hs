@@ -28,12 +28,9 @@ lookAndSay n 	| n==0 = []
 	         			
 ---GRAFO
 
---type Rotulo = n
---type Node  = (Rotulo, [Rotulo])
---type Graph = [Node]
-
-
-
+type Rotulo  n = n
+type Node  n = (Rotulo n, [Rotulo n])
+type Graph n = [Node n]
 
 remove:: (Eq t)=>t->[(t,[t])]->[(t,[t])]
 remove r [] = []
