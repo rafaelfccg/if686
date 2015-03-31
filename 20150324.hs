@@ -81,12 +81,12 @@ devolver bd p l = [(p1,l1)| (p1,l1) <- bd, not (p1 ==p && l1 ==l) ]
 divide:: [Int]->Int->([Int],[Int])->([Int],[Int])
 divide [] n p= p
 divide (x:xs) n (me, ma) |  x>n = (divide xs n (me,x:ma))
-					   | x<n = divide xs n ((x:me),ma)
+					   | otherwise = divide xs n ((x:me),ma)
 
 qs :: [Int]->[Int]
 qs [] = []
 qs p = (qs me )++ head p:(qs ma)
-		where (me,ma) = (divide p (head p) ([],[]))
+		where (me,ma) = (divide (tail p) (head p) ([],[]))
 
 --Text PRocessing
 --getWord :: String -> String
