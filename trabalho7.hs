@@ -1,3 +1,8 @@
+compose::(Show t) => (t -> t) -> [(t -> t)] -> [t -> t]
+compose f [] = []
+compose f [g] = [f.g]
+compose f (g:gs) = [f.g] ++ (compose f gs)
+----
 data Tree t = NilT | Node t (Tree t) (Tree t) deriving (Show, Eq)
 
 tr:: Tree Int
@@ -20,7 +25,7 @@ foldTree f s (Node a tr1 tr2) = f a (foldTree f s tr1) (foldTree f s tr2)
 
 sumi::Int->Int->Int->Int
 sumi a b c= ((a+b)+c)
-
+----------
 filterTree::(t->Bool)->Tree t->[Tree t]
 filterTree _ NilT = []
 filterTree  f (Node t tr tl) | not (f t ) = (filterTree f tr)++(filterTree f tl)
