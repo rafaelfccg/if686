@@ -52,3 +52,48 @@ removeFtree:: (t->Bool)-> Tree t->Tree t
 removeFtree f NilT = NilT
 removeFtree f (Node v tr tl)| (f v) = (Node v (removeFtree f tr) (removeFtree f tl))
 							| otherwise = NilT
+
+
+
+
+--------------------------------------EXERCICIOS EM AULA-----------------------------------
+
+
+filterLists:: [[Int]]->Int->[[Int]]
+filterLists l v =  filter (\x->(foldr (+) 0 x)>= v) l
+
+inter::(Eq t)=>[t]->[t]->[t]
+inter [] _ = []
+inter _ [] = []
+inter (x:xs) ys= (filter (==x) ys) ++ (inter xs ys)
+
+diff::(Eq t)=>[t]->[t]->[t]
+diff [] y = y
+diff x [] = x
+diff x y  |  int == [] = x++y
+		  |  otherwise = (diff (filter (/=(head int)) x) (filter (/=(head int)) y))
+                  where int = (inter y x)
+
+
+mapfilter::(t->Bool)->[[t]]->[[t]]
+mapfilter f [] = []
+mapfilter f (x:xs) = [a | a<-x, f a]:(mapfilter f xs )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
