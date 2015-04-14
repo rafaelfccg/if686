@@ -25,6 +25,18 @@ foldTree f s (Node a tr1 tr2) = f a (foldTree f s tr1) (foldTree f s tr2)
 
 sumi::Int->Int->Int->Int
 sumi a b c= ((a+b)+c)
+------------------------
+
+data Edge = Edge Int Int deriving (Eq,Show,Ord) -- vai para / Custo
+data Node t = Nodi Int t [(Edge)] deriving (Eq,Show,Ord)
+
+mapGraph :: (t -> u) -> [Node t] -> [Node u]
+mapGraph f [] =  []
+mapGraph f ((Nodi i t le):xs) = (Nodi i (f t) le):(mapGraph f xs)
+
+foldGraph:: (t->u->u)-> u->[Node t] -> u
+foldGraph _ s [] = s
+foldGraph f s ((Nodi i a le):xs) = f a (foldGraph f s xs)
 ----------
 filterTree::(t->Bool)->Tree t->[Tree t]
 filterTree _ NilT = []
