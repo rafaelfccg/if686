@@ -1,12 +1,15 @@
 --TRABALHO
+import Data.List (sort)
+
 listPartitioner:: (Num a, Ord a)=>[a]->([a]->[[a]])
-listPartitioner l = partAux l
+listPartitioner l = partAux (sort l) 
 
 partAux::(Num a,Ord a) => [a]->[a]->[[a]]
 partAux _ [] = []
-partAux [] k = [k]
-partAux (f:fs) (s:ss) | s<=f = (s:(partAux2 ss f)):(partAux fs (cut ss f)) 
+partAux [] k = [tail k]
+partAux (f:fs) k | s<=f = (s:(partAux2 ss f)):(partAux fs (cut ss f)) 
 					  | otherwise =  (partAux fs (s:ss))
+						where s:ss = (sort k)
 
 partAux2::(Num a,Ord a) => [a]->a->[a]
 partAux2 [] _ = []
