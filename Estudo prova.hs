@@ -35,3 +35,9 @@ findNode (x:xs) id | (fst x) == id = x
 
 grafoo::[(Int,[Int])]
 grafoo = [(1,[2,3,4]),(2,[1,3]),(3,[4,5]),(4,[1,5,2]),(5,[2]),(6,[1])]
+
+
+getLine
+getChar
+putStrLn
+putStr
