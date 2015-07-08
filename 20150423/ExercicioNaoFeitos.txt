@@ -1,0 +1,8 @@
+Exercícios não feitos:
+Dia 22 de março(1) : Ultima questao
+Dia 22 de março(2) : 
+Dia 26 de março(3) :
+Dia 7 de abril(4)  : (Faltava o map tree, mas eu coloquei em algum dos tralhos)
+Dia 14 de abril(5) : map.foldr
+dia 16 de abril(6) : verifica se as arvores sao isomorficas, lista ed pares.
+
